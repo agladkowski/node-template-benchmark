@@ -5,3 +5,7 @@ How to run
 
 >node bin/www
 
+How to access
+====
+Go to http://localhost:3000 then follow the links
+
