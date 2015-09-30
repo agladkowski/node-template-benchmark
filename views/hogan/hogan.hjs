@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hogan template benchmark</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <table>
+      {{#messages}}
+      <tr>
+          <td>Lorem ipsum, lorem ipsum, lorem ipsum {{message}}</td>
+      </tr>
+      {{/messages}}
+    </table>
+  </body>
+</html>

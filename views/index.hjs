@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Template engine benchmargs</h1>
+    <p><a href="/hogan?messageCount=300">Hogan</a></p>
+    <p><a href="/react?messageCount=300">React</a></p>
+  </body>
+</html>
