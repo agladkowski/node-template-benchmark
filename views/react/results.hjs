@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Hogan template benchmark</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <p><b>Number of messages to render:</b> {{numberOfMessages}}</p>

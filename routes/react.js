@@ -4,22 +4,21 @@ var router = express.Router();
 var browserify = require('browserify');
 var React = require('react');
 var jsx = require('node-jsx');
-
 var app = express();
 
 jsx.install();
 
 var Messages = require('../views/react/Messages.jsx');
 
+var bundle = browserify('./appClient.js', {
+    //debug: true,
+    cache: true,
+    precompile: true
+}).transform('reactify').bundle();
+
 router.get('/bundle.js', function(req, res, next) {
   res.setHeader('content-type', 'application/javascript');
-  var result = browserify('./appClient.js', {
-    //debug: true,
-  cache: true,
-  precompile: true
-  })
-  .transform('reactify')
-  .bundle().pipe(res);
+  bundle.pipe(res);
 });
 
 function prepareMessages(req) {

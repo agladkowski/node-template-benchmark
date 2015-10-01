@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Hogan = require('hjs');
 var fs = require('fs');
-var template = Hogan.compile(fs.readFileSync('views/hogan/hogan.hjs', "utf8"));
+var MessagesTemplate = Hogan.compile(fs.readFileSync('views/hogan/messages.hjs', "utf8"));
+var MessageTemplate = Hogan.compile(fs.readFileSync('views/hogan/message.hjs', "utf8"));
 
 function prepareMessages(req) {
   var messageCount = req.query.messageCount ? req.query.messageCount : 100;
@@ -14,10 +15,15 @@ function prepareMessages(req) {
 }
 
 function renderMessages(messages) {
-  return template.render({messages: messages});
+  var context = {messages: messages};
+  var partials = {message: MessageTemplate};
+  return MessagesTemplate.render(context, partials);
 }
 
-/* GET hogan listing. */
+router.get('/template', function(req, res, next) {
+    res.send(renderMessages(prepareMessages(req)));
+});
+
 router.get('/', function(req, res, next) {
   var messages = prepareMessages(req);
 
@@ -27,11 +33,6 @@ router.get('/', function(req, res, next) {
   var endTime = (new Date().getTime() - startTime);
 
   res.render('hogan/results', { numberOfMessages: messages.length, renderingTime: endTime + "milliseconds"});
-});
-
-router.get('/template', function(req, res, next) {
-  var messages = prepareMessages(req);
-  res.send(renderMessages(messages));
 });
 
 module.exports = router;
