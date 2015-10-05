@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hogan template benchmark</title>
+    <title>SWIG template benchmark</title>
   </head>
   <body>
     <table>
       {% for message in messages %}
-        {% include 'message.swig' %}
+        {% include 'message.swig' with message only %}
       {% endfor %}
     </table>
   </body>

@@ -26,7 +26,7 @@ function prepareMessagesForRequest (request)
 // It's worth noting SWIG can directly integrate with
 // Express. For consistancy I have implemented the test using
 // the SWIG API directly, but in a real implementation the
-// code will look a lot less like boiler plate.
+// code will look a lot less like repetitive boiler plate code.
 // --------------------------------------------------------
 
 module.exports = express.Router()
