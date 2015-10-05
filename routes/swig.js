@@ -8,9 +8,9 @@ var swig    = require('swig');
 
 // --------------------------------------------------------
 
-function prepareMessages (req)
+function prepareMessagesForRequest (request)
 {
-    var messages = [], messageCount = req.query.messageCount ? req.query.messageCount : 100;
+    var messages = [], messageCount = request.query.messageCount ? request.query.messageCount : 100;
 
     for (var i = 0; i < messageCount; i++)
     {
@@ -33,7 +33,7 @@ module.exports = express.Router()
 
     .get('/', function (request, response)
     {
-        var messages = prepareMessages(request);
+        var messages = prepareMessagesForRequest(request);
 
         // Started.
         var startTime = new Date().getTime();
@@ -70,7 +70,7 @@ module.exports = express.Router()
 
     .get('/template', function (request, response)
     {
-        var messages = prepareMessages(request);
+        var messages = prepareMessagesForRequest(request);
 
         // Respond.
         swig.renderFile('views/swig/messages.swig',
