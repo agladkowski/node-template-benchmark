@@ -7,5 +7,6 @@
     <h1>Template engine benchmargs</h1>
     <p><a href="/hogan?messageCount=300">Hogan</a></p>
     <p><a href="/react?messageCount=300">React</a></p>
+    <p><a href="/swig?messageCount=300">SWIG</a></p>
   </body>
 </html>
